@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main # Sau master, în funcție de numele branch-ului tău principal
+
+media_folder: "src/assets/images" # Unde vor fi salvate imaginile
+public_folder: "/assets/images" # Cum sunt accesate imaginile de pe site
+
+collections:
+  - name: "stiri" # Numele colecției definite în Astro
+    label: "Doze de știri" # Numele care apare în CMS
+    folder: "src/content/stiri" # Folderul unde se salvează articolele
+    create: true # Permite crearea de articole noi
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Cum se generează numele fișierului
+    fields: # Câmpurile pe care le vei completa pentru fiecare articol
+      - { label: "Titlu", name: "title", widget: "string" }
+      - { label: "Data Publicării", name: "pubDate", widget: "datetime" }
+      - { label: "Scurtă Descriere", name: "description", widget: "string" }
+      - { label: "Imagine Principală", name: "heroImage", widget: "image", optional: true }
+      - { label: "Conținut Articol", name: "body", widget: "markdown" }
